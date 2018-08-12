@@ -1,0 +1,7 @@
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\obj\Debug\Messaging.csprojResolveAssemblyReference.cache
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\obj\Debug\Messaging.csproj.CoreCompileInputs.cache
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\bin\Debug\Messaging.exe.config
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\bin\Debug\Messaging.exe
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\bin\Debug\Messaging.pdb
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\obj\Debug\Messaging.exe
+c:\users\noahfkaplan\documents\visual studio 2017\Projects\Messaging\Messaging\obj\Debug\Messaging.pdb
