@@ -8,7 +8,6 @@ namespace Messaging
 {
     public interface IClientConnection
     {
-        int bufferSize { get; }
         IClientInformation clientInformation { get; set; }
     }
 }

@@ -12,32 +12,5 @@ namespace MessagingTests
     public class ClientInformationTests
     {
         
-        [TestMethod]
-        public void CanUpdateUserName()
-        {
-            var client = new ClientInformation();
-            client.Username = "TestUsername";
-            Assert.AreEqual(client.Username, "TestUsername");
-        }
-        [TestMethod]
-        public void CanUpdatePassword()
-        {
-            var client = new ClientInformation();
-            client.Password = "TestPassword";
-            Assert.AreEqual(client.Password, "TestPassword");
-        }
-        [TestMethod]
-        public void DefaultsUsernameToUndefined()
-        {
-            var client = new ClientInformation();
-            Assert.AreEqual(client.Username, "Unassigned");
-        }
-        [TestMethod]
-        public void DefaultsPasswordToPassword()
-        {
-            var client = new ClientInformation();
-            Assert.AreEqual(client.Password, "Password");
-        }
-        
     }
 }

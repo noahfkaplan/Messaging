@@ -9,7 +9,7 @@ namespace Messaging
     interface IServerSessionActions
     {
         int Bind();
-        int Listen();
+        int ListenForConnection();
         int AcceptConnection();
         int ReceiveMessage();
         int SendMessage();

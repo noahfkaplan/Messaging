@@ -46,6 +46,8 @@
     <Compile Include="ClientConnectionTests.cs" />
     <Compile Include="ClientInformationTests.cs" />
     <Compile Include="Mocks\MockClientInformation.cs" />
+    <Compile Include="Mocks\MockSocket.cs" />
+    <Compile Include="PacketTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
