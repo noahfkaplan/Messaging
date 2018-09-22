@@ -11,6 +11,6 @@ namespace Messaging
         int bufferSize { get; }
         int offset { get; }
         byte[] buffer { get; }
-        ISocket userSocket { get; }
+        ISocket userSocket { get; set; }
     }
 }

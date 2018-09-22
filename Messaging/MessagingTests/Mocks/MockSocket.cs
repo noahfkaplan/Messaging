@@ -9,6 +9,7 @@ namespace MessagingTests.Mocks
 {
     public class MockSocket : ISocket
     {
+        public MockSocket(){}
         public void Bind()
         {
             throw new NotImplementedException();

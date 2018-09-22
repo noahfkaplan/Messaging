@@ -9,8 +9,6 @@ namespace Messaging
 {
     public interface IClientInformation
     {
-        string Username { get; set; }
-        string Password { get; set; }
         Guid UniqueID { get; }
     }
 }

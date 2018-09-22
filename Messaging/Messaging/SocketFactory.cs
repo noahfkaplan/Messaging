@@ -19,7 +19,7 @@ namespace Messaging
             _socket = new MySocket();
             return _socket;
         }
-        public void setSocket(ISocket soc)
+        public static void setSocket(ISocket soc)
         {
             _socket = soc;
         }

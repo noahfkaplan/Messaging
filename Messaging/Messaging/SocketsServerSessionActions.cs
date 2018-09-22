@@ -10,28 +10,38 @@ namespace Messaging
     public class SocketsServerSessionActions : IServerSessionActions
     {
         private List<ISocketClientConnection> _SessionMembers;
-        private ISocket _MainServerSocket;
+        private ISocket _ServerSocket;
 
         public SocketsServerSessionActions()
         {
-            _MainServerSocket = SocketFactory.CreateSocket();
+            _ServerSocket = SocketFactory.CreateSocket();
         }
 
         public int Bind()
         {
-            _MainServerSocket.Bind();
+            _ServerSocket.Bind();
             return 1; //success, if logic to check for failed listen, return zero. future
         }
 
         public int ListenForConnection()
         {
-            _MainServerSocket.Listen(50);//stop hard code in future
+            _ServerSocket.Listen(50);//stop hard code in future
             return 1; //success, if logic to check for failed listen, return zero. future
         }
 
         public int AcceptConnection()
         {
-            throw new NotImplementedException();
+            ISocketClientConnection newUser = SocketClientConnectionFactory.CreateClientConnection();
+            _SessionMembers.Add(newUser);
+            _ServerSocket.BeginAccept(AcceptCallback, newUser.clientInformation);//create a better state object for information transfer. Future
+            return 1; //success, if logic to check for failed listen, return zero. future
+        }
+
+        public void AcceptCallback(IAsyncResult result)
+        {
+            IClientInformation userInformation = result as IClientInformation;
+            ISocketClientConnection user = _SessionMembers.Find(x => x.clientInformation.UniqueID == userInformation.UniqueID);
+            user.userSocket = _ServerSocket.EndAccept(result);
         }
 
         public int ReceiveMessage()
