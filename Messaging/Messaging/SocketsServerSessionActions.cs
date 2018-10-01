@@ -14,7 +14,8 @@ namespace Messaging
 
         public SocketsServerSessionActions()
         {
-            _ServerSocket = SocketFactory.CreateSocket();
+            SocketFactory factory = new SocketFactory();//might need to be refactored to inject this. Future
+            _ServerSocket = factory.CreateSocket();
         }
 
         public int Bind()
@@ -37,7 +38,7 @@ namespace Messaging
             return 1; //success, if logic to check for failed listen, return zero. future
         }
 
-        public void AcceptCallback(IAsyncResult result)
+        private void AcceptCallback(IAsyncResult result)
         {
             IClientInformation userInformation = result as IClientInformation;
             ISocketClientConnection user = _SessionMembers.Find(x => x.clientInformation.UniqueID == userInformation.UniqueID);

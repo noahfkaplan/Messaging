@@ -17,8 +17,9 @@ namespace MessagingTests
         {
             //arrange
             ISocket socket;
+            SocketFactory factory = new SocketFactory();
             //act
-            socket = SocketFactory.CreateSocket();
+            socket = factory.CreateSocket();
             //assert
             Assert.IsInstanceOfType(socket, typeof(MySocket));
         }
@@ -27,13 +28,14 @@ namespace MessagingTests
         {
             //arrange
             ISocket mockSocket = new MockSocket();
-            SocketFactory.setSocket(mockSocket);
+            SocketFactory factory = new SocketFactory();
+            factory.setSocket(mockSocket);
             //act
-            ISocket resultSocket = SocketFactory.CreateSocket();
+            ISocket resultSocket = factory.CreateSocket();
             //assert
             Assert.IsTrue(resultSocket == mockSocket);
             //cleanup
-            SocketFactory.setSocket(null);
+            factory.setSocket(null);
         }
     }
 }

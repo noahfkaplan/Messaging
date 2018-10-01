@@ -11,7 +11,7 @@ namespace Messaging
         void Bind();
         void Listen(int backlog);
         void BeginAccept(AsyncCallback AcceptCallback, object State);
-        void EndAccept(IAsyncResult result);
+        ISocket EndAccept(IAsyncResult result);
         void BeginReceive(ISocketClientConnection connectionInfo, AsyncCallback AcceptCallback, object State);
         void EndRecieve(IAsyncResult result);
         void BeginSend(ISocketClientConnection connectionInfo, AsyncCallback AcceptCallback, object State);

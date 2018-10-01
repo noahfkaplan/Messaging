@@ -11,10 +11,10 @@ namespace Messaging
 {
     public class MySocket : ISocket
     {
-        Socket _socket;
-        public MySocket()
+        private Socket _socket { get; set; }
+        public MySocket(Socket soc)
         {
-            _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _socket = soc;
         }
         public void BeginAccept(AsyncCallback AcceptCallback, object State)
         {
@@ -40,9 +40,13 @@ namespace Messaging
             _socket.Bind(localEndPoint);
         }
 
-        public void EndAccept(IAsyncResult result)
+        public ISocket EndAccept(IAsyncResult result)
         {
-            _socket.EndAccept(result);
+            ISocket client;
+            Socket temp = _socket.EndAccept(result);
+            client = new MySocket(temp);
+            return client;
+
         }
 
         public void EndRecieve(IAsyncResult result)

@@ -25,7 +25,7 @@ namespace MessagingTests.Mocks
             throw new NotImplementedException();
         }
 
-        public void EndAccept(IAsyncResult result)
+        public ISocket EndAccept(IAsyncResult result)
         {
             throw new NotImplementedException();
         }

@@ -9,17 +9,22 @@ namespace Messaging
 {
     public class SocketFactory
     {
-        private static ISocket _socket = null;
-        public static ISocket CreateSocket()
+        private ISocket _socket;
+        public SocketFactory()
+        {
+            _socket = null;
+        }
+        public ISocket CreateSocket()
         {
             if(_socket != null)
             {
                 return _socket;
             }
-            _socket = new MySocket();
+            var CSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _socket = new MySocket(CSocket);
             return _socket;
         }
-        public static void setSocket(ISocket soc)
+        public void setSocket(ISocket soc)
         {
             _socket = soc;
         }
