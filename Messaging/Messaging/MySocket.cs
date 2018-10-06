@@ -23,12 +23,12 @@ namespace Messaging
 
         public void BeginReceive(ISocketClientConnection connectionInfo, AsyncCallback AcceptCallback, object State)
         {
-            _socket.BeginReceive(connectionInfo.buffer,connectionInfo.offset, connectionInfo.bufferSize, SocketFlags.None, AcceptCallback,State);
+            _socket.BeginReceive(connectionInfo.packet.buffer,connectionInfo.packet.offset, connectionInfo.packet.bufferSize, SocketFlags.None, AcceptCallback,State);
         }
 
         public void BeginSend(ISocketClientConnection connectionInfo, AsyncCallback AcceptCallback, object State)
         {
-            _socket.BeginSend(connectionInfo.buffer, connectionInfo.offset, connectionInfo.bufferSize, SocketFlags.None, AcceptCallback, State);
+            _socket.BeginSend(connectionInfo.packet.buffer, connectionInfo.packet.offset, connectionInfo.packet.bufferSize, SocketFlags.None, AcceptCallback, State);
         }
 
         public void Bind()

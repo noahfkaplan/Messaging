@@ -11,9 +11,10 @@ namespace Messaging
     {
         public ClientInformation()
         {
-            UniqueID = new Guid();
-      
+            UniqueID = Guid.NewGuid();
+            packet = new Packet();
         }
+        public IPacket packet;
         public Guid UniqueID { get;}
     }
 }

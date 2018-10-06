@@ -43,16 +43,46 @@ namespace Messaging
             IClientInformation userInformation = result as IClientInformation;
             ISocketClientConnection user = _SessionMembers.Find(x => x.clientInformation.UniqueID == userInformation.UniqueID);
             user.userSocket = _ServerSocket.EndAccept(result);
+            ReceiveMessage(user);
         }
 
-        public int ReceiveMessage()
+        public int ReceiveMessage(ISocketClientConnection user)
         {
-            throw new NotImplementedException();
+            user.userSocket.BeginReceive(user, ReceiveCallback,user.clientInformation);
+            return 1;
         }
 
-        public int SendMessage()
+        private void ReceiveCallback(IAsyncResult result)
         {
-            throw new NotImplementedException();
+            IClientInformation userInformation = result as IClientInformation;
+            ISocketClientConnection fromUser = _SessionMembers.Find(x => x.clientInformation.UniqueID == userInformation.UniqueID);
+            fromUser.userSocket.EndRecieve(result);
+            bool successfulMessage = fromUser.packet.CreateMessage();
+            if (successfulMessage)
+            {
+                try
+                {
+                    ISocketClientConnection toUser = _SessionMembers.Find(x => x.clientInformation.UniqueID == fromUser.packet.message.RecipientID);
+                    SendMessage(toUser, fromUser);
+                }
+                catch (ArgumentNullException)
+                {
+                    //log when I get logging implemented
+                }
+            }
+            fromUser.userSocket.BeginReceive(fromUser, ReceiveCallback, fromUser.clientInformation);
+        }
+
+        public int SendMessage(ISocketClientConnection toUser, ISocketClientConnection fromUser)
+        {
+            toUser.userSocket.BeginSend(fromUser, SendCallback, toUser.clientInformation);
+            return 1;
+        }
+        private void SendCallback(IAsyncResult result)
+        {
+            IClientInformation toUserInformation = result as IClientInformation;
+            ISocketClientConnection toUser = _SessionMembers.Find(x => x.clientInformation.UniqueID == toUserInformation.UniqueID);
+            toUser.userSocket.EndSend(result);
         }
     }
 }

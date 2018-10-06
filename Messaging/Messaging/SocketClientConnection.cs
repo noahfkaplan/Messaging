@@ -10,14 +10,10 @@ namespace Messaging
     {
         public SocketClientConnection(IClientInformation clientInfo)
         {
-
-            bufferSize = 1024;
             clientInformation = clientInfo;
         }
-        public int bufferSize { get; }
         public IClientInformation clientInformation { get; set; }
         public ISocket userSocket { get; set; }
-        public int offset { get; set; }
-        public byte[] buffer { get; set; }
+        public IPacket packet { get; set; }
     }
 }
