@@ -31,13 +31,14 @@ namespace MessagingTests
         [TestMethod]
         public void CreateMessage_GivenValidPacket_ReturnsTrue()
         {
-            IMessage mockMessage = new MockMessage();
+            //arrange 
+            MockMessage mockMessage = new MockMessage();
             var packet = new Packet();
             string testPayload = "Test Message|A3C6B524-1BE1-4D9D-84FB-EF64993CCA28|97846D61-1CA0-49BD-8E79-AE3AF6373B26";
             packet.buffer = Encoding.ASCII.GetBytes(testPayload);
-
+            //act
             packet.CreateMessage();
-
+            //assert
             Assert.IsTrue(mockMessage.Equals(packet.message));
         }
         

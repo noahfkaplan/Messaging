@@ -23,7 +23,11 @@ namespace MessagingTests.Mocks
         }
         public bool Equals(IMessage message)
         {
-            if(RecipientID.Equals(message.RecipientID) && SenderID.Equals(message.SenderID) && Payload.Equals(message.Payload))
+            bool one = RecipientID.Equals(message.RecipientID);
+            bool two = SenderID.Equals(message.SenderID);
+            bool three = Payload.Equals(message.Payload);
+
+            if (RecipientID.Equals(message.RecipientID) && SenderID.Equals(message.SenderID) && Payload.Equals(message.Payload))
             {
                 return true;
             }
