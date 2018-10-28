@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Messaging
 {
-    public interface IClientConnection
+    public interface IMessage
     {
-        IClientInformation clientInformation { get; set; }
+        Guid SenderID { get; }
+        Guid RecipientID { get; }
+        String Payload { get; }
     }
 }

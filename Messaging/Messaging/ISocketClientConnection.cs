@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Messaging
 {
-    public interface IClientConnection
+    public interface ISocketClientConnection : IClientConnection
     {
-        IClientInformation clientInformation { get; set; }
+        IPacket packet { get; set; }
+        ISocket userSocket { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace MessagingTests
         {
             Username = "TestUsername";
             Password = "TestPassword";
-            UniqueID = new Guid();
+            UniqueID = Guid.NewGuid();
         }
         public string Username { get; set; }
         public string Password { get; set; }

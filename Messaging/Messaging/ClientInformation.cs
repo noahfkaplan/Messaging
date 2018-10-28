@@ -11,18 +11,10 @@ namespace Messaging
     {
         public ClientInformation()
         {
-            Username = "Unassigned";
-            Password = "Password";
-            UniqueID = new Guid();
-      
+            UniqueID = Guid.NewGuid();
+            packet = new Packet();
         }
-        public ClientInformation(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public IPacket packet;
         public Guid UniqueID { get;}
     }
 }

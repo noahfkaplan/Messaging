@@ -10,7 +10,21 @@ namespace Messaging
     {
         public static int Main()
         {
-            return 0;
+            try
+            {
+                SocketsServerSessionActions server = new SocketsServerSessionActions();
+                server.Bind();
+                server.ListenForConnection();
+                server.AcceptConnection();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Connection Lost with clients");
+            }
+            while (true)
+            {
+                Console.ReadLine();
+            }
         }
     }
 }

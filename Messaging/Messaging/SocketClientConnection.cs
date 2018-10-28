@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Messaging
 {
-    public class ClientConnection : IClientConnection
+    public class SocketClientConnection : ISocketClientConnection 
     {
-        public ClientConnection(IClientInformation clientInfo)
+        public SocketClientConnection(IClientInformation clientInfo)
         {
-            bufferSize = 1024;
             clientInformation = clientInfo;
         }
-        public int bufferSize { get; }
         public IClientInformation clientInformation { get; set; }
+        public ISocket userSocket { get; set; }
+        public IPacket packet { get; set; }
     }
 }

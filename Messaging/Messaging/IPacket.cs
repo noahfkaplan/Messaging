@@ -9,6 +9,10 @@ namespace Messaging
     public interface IPacket
     {
         bool CreatePacket(string body, Guid recipientID, Guid senderID);
-        string Message { get; }
+        bool CreateMessage();
+        int bufferSize { get; set; }
+        int offset { get; set; }
+        byte[] buffer { get; set; }
+        IMessage message { get; }
     }
 }

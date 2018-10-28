@@ -46,8 +46,13 @@
     <Compile Include="ClientConnectionTests.cs" />
     <Compile Include="ClientInformationTests.cs" />
     <Compile Include="Mocks\MockClientInformation.cs" />
+    <Compile Include="Mocks\MockMessage.cs" />
+    <Compile Include="Mocks\MockSocket.cs" />
+    <Compile Include="PacketTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketFactoryTests.cs" />
+    <Compile Include="SocketsServerSessionActionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
