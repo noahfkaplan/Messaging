@@ -16,6 +16,7 @@ namespace Messaging
         {
             SocketFactory factory = new SocketFactory();//might need to be refactored to inject this. Future
             _ServerSocket = factory.CreateSocket();
+            _SessionMembers = new List<ISocketClientConnection>();
         }
 
         public int Bind()
@@ -40,7 +41,7 @@ namespace Messaging
 
         private void AcceptCallback(IAsyncResult result)
         {
-            IClientInformation userInformation = result as IClientInformation;
+            IClientInformation userInformation = result.AsyncState as IClientInformation;
             ISocketClientConnection user = _SessionMembers.Find(x => x.clientInformation.UniqueID == userInformation.UniqueID);
             user.userSocket = _ServerSocket.EndAccept(result);
             ReceiveMessage(user);
